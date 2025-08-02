@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +16,7 @@ import com.feedback.entity.CustomerEntity;
 import com.feedback.service.CustomerService;
 
 @RestController
-@CrossOrigin("http://localhost:8080")
+@CrossOrigin("http://localhost:9000")
 @RequestMapping("/")
 public class CustomerController {
 	
@@ -29,6 +31,11 @@ public class CustomerController {
 	@GetMapping("allCustomer")
 	public ResponseEntity<List<CustomerEntity>> getCustomerList(){
 		return new ResponseEntity<List<CustomerEntity>>(custServ.getAllCustomer(), HttpStatus.ACCEPTED);
+	}
+	
+	@PostMapping("addCustomer")
+	public ResponseEntity<String> addCustomer(@RequestBody CustomerEntity customer) {
+		return new ResponseEntity<String>(custServ.addCustomer(customer),HttpStatus.ACCEPTED);
 	}
 	
 }

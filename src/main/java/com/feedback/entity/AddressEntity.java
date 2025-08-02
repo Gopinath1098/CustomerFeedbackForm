@@ -18,6 +18,7 @@ public class AddressEntity {
 	public String city;
 	public String state;
 	public String Country;
+	
 	public Long getId() {
 		return id;
 	}

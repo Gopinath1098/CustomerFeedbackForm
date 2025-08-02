@@ -3,6 +3,7 @@ package com.feedback.entity;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -23,7 +24,7 @@ public class CustomerEntity {
 	public String gender;
 	public String email;
 	public Long mobileNo;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id", referencedColumnName = "id")
 	public AddressEntity address;
 	
