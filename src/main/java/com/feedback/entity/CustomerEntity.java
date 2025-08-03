@@ -3,7 +3,10 @@ package com.feedback.entity;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import org.antlr.v4.runtime.misc.NotNull;
+
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -16,17 +19,21 @@ import jakarta.persistence.Table;
 public class CustomerEntity {
 	
 	@Id
-	public String custId;
-	public String firstName;
-	public String lastName;
-	public int age;
-	public String nationality;
-	public String gender;
-	public String email;
-	public Long mobileNo;
+	private String custId;
+	private String firstName;
+	private String lastName;
+	private Integer age;
+	private String nationality;
+	private String gender;
+	@Column(unique = true)
+	private String email;
+	@Column(unique = true)
+	private String mobileNo;
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id", referencedColumnName = "id")
 	public AddressEntity address;
+	@NotNull
+	private String Message;
 	
 	@PrePersist
 	public void generateCustomId() {
@@ -62,7 +69,7 @@ public class CustomerEntity {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 
@@ -90,11 +97,11 @@ public class CustomerEntity {
 		this.email = email;
 	}
 
-	public Long getMobileNo() {
+	public String getMobileNo() {
 		return mobileNo;
 	}
 
-	public void setMobileNo(Long mobileNo) {
+	public void setMobileNo(String mobileNo) {
 		this.mobileNo = mobileNo;
 	}
 
@@ -104,6 +111,23 @@ public class CustomerEntity {
 
 	public void setAddress(AddressEntity address) {
 		this.address = address;
+	}
+
+	public String getMessage() {
+		return Message;
+	}
+
+	public void setMessage(String message) {
+		Message = message;
+	}
+
+	@Override
+	public String toString() {
+		return "CustomerEntity [custId=" + custId + ", firstName=" + firstName + ", lastName=" + lastName + ", age="
+				+ age + ", nationality=" + nationality + ", gender=" + gender + ", email=" + email + ", mobileNo="
+				+ mobileNo + ", address=" + address + ", Message=" + Message + "]";
 	}	
+	
+	
 	
 }

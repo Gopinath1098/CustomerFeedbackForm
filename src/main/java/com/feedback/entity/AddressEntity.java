@@ -13,11 +13,11 @@ public class AddressEntity {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-	public String doorNo;
-	public String Street;
-	public String city;
-	public String state;
-	public String Country;
+	private String doorNo;
+	private String street;
+	private String city;
+	private String state;
+	private String country;
 	
 	public Long getId() {
 		return id;
@@ -32,10 +32,10 @@ public class AddressEntity {
 		this.doorNo = doorNo;
 	}
 	public String getStreet() {
-		return Street;
+		return street;
 	}
 	public void setStreet(String street) {
-		Street = street;
+		this.street = street;
 	}
 	public String getCity() {
 		return city;
@@ -50,10 +50,15 @@ public class AddressEntity {
 		this.state = state;
 	}
 	public String getCountry() {
-		return Country;
+		return country;
 	}
 	public void setCountry(String country) {
-		Country = country;
+		this.country = country;
+	}
+	@Override
+	public String toString() {
+		return "AddressEntity [id=" + id + ", doorNo=" + doorNo + ", street=" + street + ", city=" + city + ", state="
+				+ state + ", country=" + country + "]";
 	}
 	
 }

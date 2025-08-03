@@ -8,17 +8,17 @@ public class CustomerDTO {
 	private String custId;
 	private String firstName;
 	private String lastName;
-	private int age;
+	private Integer age;
 	private String nationality;
 	private String gender;
 	private String email;
-	private Long mobileNo;
+	private String mobileNo;
 	private AddressDTO address;
 	
 	
 	
 	public CustomerDTO(String custId, String firstName, String lastName, int age, String nationality, String gender,
-			String email, Long mobileNo, AddressDTO address) {
+			String email, String mobileNo, AddressDTO address) {
 		super();
 		this.custId = custId;
 		this.firstName = firstName;
@@ -73,10 +73,10 @@ public class CustomerDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Long getMobileNo() {
+	public String getMobileNo() {
 		return mobileNo;
 	}
-	public void setMobileNo(Long mobileNo) {
+	public void setMobileNo(String mobileNo) {
 		this.mobileNo = mobileNo;
 	}
 	public AddressDTO getAddress() {
